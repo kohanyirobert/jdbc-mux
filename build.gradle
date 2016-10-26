@@ -1,0 +1,38 @@
+repositories {
+  jcenter()
+  mavenCentral()
+}
+
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+sourceSets {
+  main {
+    java {
+    srcDirs = []
+    }
+    groovy {
+      srcDirs = ['src/main/java', 'src/main/groovy']
+    }
+  }
+  test {
+    java {
+      srcDirs = []
+    }
+    groovy {
+      srcDirs = ['src/test/java', 'src/test/groovy']
+    }
+  }
+}
+
+dependencies {
+  compile 'org.codehaus.groovy:groovy-all:2.4.7'
+  testCompile 'org.spockframework:spock-core:1.1-groovy-2.4-rc-2'
+  testCompile 'com.h2database:h2:1.4.192'
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '3.1'
+}
